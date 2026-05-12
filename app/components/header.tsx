@@ -1,5 +1,5 @@
 'use client';
-import { MenuIcon } from 'lucide-react';
+import { List } from '@phosphor-icons/react';
 
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -22,7 +22,7 @@ export default function Hero() {
         <Sheet>
           <SheetTrigger asChild>
             <Button className='lg:hidden mr-auto' variant='outline'>
-              <MenuIcon />
+              <List size={20} />
             </Button>
           </SheetTrigger>
           <SheetContent side='bottom'>

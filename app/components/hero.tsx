@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { CaretLeft, CaretRight } from '@phosphor-icons/react';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -21,16 +21,17 @@ const DEFAULT_SLIDES: HeroSlide[] = [
   {
     id: 1,
     title: 'Bem-vindo ao Portal SIAT',
+    image: '/cavalo.jpg',
     description:
       'Sistema Integrado de Administração Tributária de Campo Grande.',
-    gradient: 'from-primary/90 to-primary/60',
+    gradient: 'from-black/90 to-black/60',
   },
   {
     id: 2,
     title: 'Serviços Digitais para Você',
     description:
       'Acesse os principais serviços tributários de forma rápida e segura.',
-    gradient: 'from-blue-800/90 to-blue-600/60',
+    gradient: 'from-black/90 to-blue-600/60',
     cta: { label: 'Carta de Serviços', href: '#' },
   },
   {
@@ -140,7 +141,7 @@ export default function Hero({
         aria-label='Slide anterior'
         className='absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white backdrop-blur-sm transition hover:bg-black/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white'
       >
-        <ChevronLeft className='h-5 w-5' />
+        <CaretLeft className='h-5 w-5' />
       </button>
 
       {/* Arrow: próximo */}
@@ -149,7 +150,7 @@ export default function Hero({
         aria-label='Próximo slide'
         className='absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white backdrop-blur-sm transition hover:bg-black/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white'
       >
-        <ChevronRight className='h-5 w-5' />
+        <CaretRight className='h-5 w-5' />
       </button>
 
       {/* Dots */}

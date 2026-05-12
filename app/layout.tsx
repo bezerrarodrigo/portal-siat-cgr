@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import Header from './components/header';
+import Footer from './components/footer';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -24,8 +25,6 @@ export const metadata: Metadata = {
   },
 };
 
-const yearNow = new Date().getFullYear();
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -46,13 +45,7 @@ export default function RootLayout({
       <body className='min-h-full flex flex-col'>
         <Header />
         {children}
-        <footer className='flex items-center p-10  h-10 bg-primary justify-center'>
-          <p className='text-xs text-center md:text-sm text-white'>
-            © {yearNow} Prefeitura de Campo Grande.Todos os direitos reservados.{' '}
-            <br />
-            Desenvolvido por DSF - Inteligência Tributária Municipal.
-          </p>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
