@@ -32,7 +32,7 @@ export default function Hero() {
             </SheetHeader>
             <div className='p-4 space-y-6'>
               <a href='/' target='_blank'>
-                Home
+                Inicial
               </a>
               <Separator className='mt-2' />
               <a href='#' target='_blank'>
@@ -48,7 +48,7 @@ export default function Hero() {
                 target='_blank'
                 rel='noreferrer'
               >
-                Prefeitura
+                Legislação
               </a>
               <Separator className='mt-2' />
               <a
