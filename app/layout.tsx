@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Portal Siat | Prefeitura de Campo Grande',
+  title: 'Portal SIAT | Prefeitura de Campo Grande',
   description: 'Desenvolvido por DSF - Inteligência Tributária Municipal.',
   icons: {
     icon: '/favicon.png',
