@@ -88,7 +88,7 @@ export default function Footer() {
           </h3>
           <div className='flex items-center gap-4'>
             <a
-              href='https://www.facebook.com/PrefeituraMunicipalCampoGrande'
+              href='https://www.facebook.com/prefcg/#'
               target='_blank'
               rel='noreferrer'
               aria-label='Facebook da Prefeitura de Campo Grande'
@@ -97,7 +97,7 @@ export default function Footer() {
               <FacebookLogoIcon size={22} />
             </a>
             <a
-              href='https://www.instagram.com/pmcampogrande'
+              href='https://www.instagram.com/prefcg/'
               target='_blank'
               rel='noreferrer'
               aria-label='Instagram da Prefeitura de Campo Grande'
@@ -111,7 +111,7 @@ export default function Footer() {
 
       <Separator className='bg-white/20' />
 
-      <div className='py-4 px-6 text-center text-xs text-white/70'>
+      <div className='py-4 px-6 text-center bg-yellow-400 text-xs text-black'>
         © {yearNow} Prefeitura de Campo Grande. Todos os direitos reservados.{' '}
         Desenvolvido por DSF – Inteligência Tributária Municipal.
       </div>

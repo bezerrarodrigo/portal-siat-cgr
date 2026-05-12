@@ -31,7 +31,7 @@ const DEFAULT_SLIDES: HeroSlide[] = [
     title: 'Serviços Digitais para Você',
     description:
       'Acesse os principais serviços tributários de forma rápida e segura.',
-    gradient: 'from-black/90 to-blue-600/60',
+    gradient: 'from-blue/90 to-blue-600/60',
     cta: { label: 'Carta de Serviços', href: '#' },
   },
   {
