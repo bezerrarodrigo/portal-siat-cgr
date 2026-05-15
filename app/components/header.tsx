@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/sheet';
 import Image from 'next/image';
 import Brasao from '../../public/brasao-color.png';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -31,72 +32,56 @@ export default function Hero() {
               <SheetDescription>Principais serviços</SheetDescription>
             </SheetHeader>
             <div className='p-4 space-y-6'>
-              <a href='/' target='_blank'>
+              <Link href='/' target='_self'>
                 Inicial
-              </a>
+              </Link>
               <Separator className='mt-2' />
-              <a href='#' target='_blank'>
+              <Link href='#' target='_self'>
                 Carta de Serviços
-              </a>
+              </Link>
               <Separator className='mt-2' />
-              <a href='#' target='_blank' rel='noreferrer'>
+              <Link href='#' target='_self'>
                 Usuário
-              </a>
+              </Link>
               <Separator className='mt-2' />
-              <a
-                href='https://www.joaopessoa.pb.gov.br/'
-                target='_blank'
-                rel='noreferrer'
-              >
+              <Link href='#' target='_self'>
                 Legislação
-              </a>
+              </Link>
               <Separator className='mt-2' />
-              <a
-                href='https://www.joaopessoa.pb.gov.br/pc/consultaLegislacao.xhtml?tipo=1'
-                target='_blank'
-                rel='noreferrer'
-              >
+              <Link href='#' target='_self'>
                 Legislação
-              </a>
+              </Link>
               <Separator className='mt-2' />
-              <a href='#' target='_blank'>
+              <Link href='#' target='_self'>
                 Dúvidas Frequentes
-              </a>
+              </Link>
             </div>
           </SheetContent>
         </Sheet>
         <nav className='hidden gap-8 lg:flex'>
-          <a href='/' target='_blank'>
+          <Link href='/' target='_self'>
             Inicial
-          </a>
+          </Link>
           <Separator style={{ height: 24 }} orientation='vertical' />
-          <a href='#' target='_blank'>
+          <Link href='#' target='_self'>
             Carta de Serviços
-          </a>
+          </Link>
           <Separator style={{ height: 24 }} orientation='vertical' />
-          <a href='#' target='_blank' rel='noreferrer'>
+          <Link href='#' target='_self'>
             Usuário
-          </a>
+          </Link>
           <Separator style={{ height: 24 }} orientation='vertical' />
-          <a
-            href='https://www.joaopessoa.pb.gov.br/'
-            target='_blank'
-            rel='noreferrer'
-          >
+          <Link href='#' target='_self'>
             Prefeitura
-          </a>
+          </Link>
           <Separator style={{ height: 24 }} orientation='vertical' />
-          <a
-            href='https://www.joaopessoa.pb.gov.br/pc/consultaLegislacao.xhtml?tipo=1'
-            target='_blank'
-            rel='noreferrer'
-          >
+          <Link href='#' target='_self'>
             Legislação
-          </a>
+          </Link>
           <Separator style={{ height: 24 }} orientation='vertical' />
-          <a href='#' target='_blank'>
+          <Link href='#' target='_self'>
             Dúvidas Frequentes
-          </a>
+          </Link>
         </nav>
         <Button className='cursor-pointer rounded-md px-4 font-light'>
           Entrar
