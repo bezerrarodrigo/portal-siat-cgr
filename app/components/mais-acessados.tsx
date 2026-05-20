@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-import { cn } from '@/lib/utils';
 import {
   Command,
   CommandEmpty,
@@ -9,32 +7,34 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 import {
-  Home,
-  Copy,
-  BookOpen,
-  FileText,
-  Users,
-  PawPrint,
   Award,
-  Briefcase,
-  MapPin,
-  UserCircle,
-  Scale,
-  PieChart,
-  Building2,
-  Receipt,
-  ClipboardList,
-  Truck,
   BarChart3,
-  FileCheck,
-  CreditCard,
-  Calendar,
   BookMarked,
-  Monitor,
-  UserCheck,
+  BookOpen,
+  Briefcase,
+  Building2,
+  Calendar,
+  ClipboardList,
+  Copy,
+  CreditCard,
+  FileCheck,
+  FileText,
+  Home,
   Lock,
+  Monitor,
+  PieChart,
+  Receipt,
+  Scale,
+  Truck,
+  UserCheck,
+  UserCircle,
+  Users,
+  File,
 } from 'lucide-react';
+import { useState } from 'react';
 
 type Profile = 'cidadao' | 'empresa' | 'servidor';
 
@@ -47,18 +47,54 @@ interface Service {
 
 const servicesByProfile: Record<Profile, Service[]> = {
   cidadao: [
-    { id: 'iptu', title: 'IPTU', icon: Home },
-    { id: 'servicos', title: 'Serviços', icon: Copy },
-    { id: 'diogrande', title: 'DioGrande', icon: BookOpen },
-    { id: 'nota-fiscal', title: 'Nota Fiscal', icon: FileText },
-    { id: 'vagas', title: 'Vagas e Oportunidades', icon: Users },
-    { id: 'ccz', title: 'CCZ Online', icon: PawPrint },
-    { id: 'nota-premiada', title: 'Nota Premiada CG', icon: Award },
-    { id: 'emprego', title: 'Emprego', icon: Briefcase },
-    { id: 'matricula', title: 'Matrícula Online', icon: MapPin },
-    { id: 'pnafm', title: 'PNAFM', icon: UserCircle },
-    { id: 'legislacao', title: 'Legislação Municipal', icon: Scale },
-    { id: 'radar', title: 'Radar da Transparência', icon: PieChart },
+    {
+      id: 'guia',
+      title: 'Extrato Guia',
+      icon: Home,
+      href: '/servicos/cidadao/guia',
+    },
+    {
+      id: 'certidao',
+      title: 'Certidão Financeira Pessoa',
+      icon: Copy,
+      href: '/servicos/cidadao/certidao',
+    },
+    {
+      id: 'imovel',
+      title: 'Certidão Financeira Imóvel',
+      icon: BookOpen,
+      href: '/servicos/cidadao/imovel',
+    },
+    {
+      id: 'baixa',
+      title: 'Certidão Baixa de Inscrição Municipal',
+      icon: FileText,
+      href: '/servicos/cidadao/baixa',
+    },
+    {
+      id: 'comprovante',
+      title: 'Comprovante de Inscrição e de Situação Cadastral',
+      icon: Users,
+      href: '/servicos/cidadao/comprovante',
+    },
+    {
+      id: 'autenticidade',
+      title: 'Autenticidade Certidão',
+      icon: File,
+      href: '/servicos/cidadao/autenticidade',
+    },
+    {
+      id: 'cadastro',
+      title: 'Ficha Cadastral Imóvel',
+      icon: Award,
+      href: '/servicos/cidadao/cadastro',
+    },
+    {
+      id: 'economico',
+      title: 'Indicador Econômico',
+      icon: Briefcase,
+      href: '/servicos/cidadao/economico',
+    },
   ],
   empresa: [
     { id: 'nota-fiscal-e', title: 'Nota Fiscal', icon: Receipt },
@@ -99,7 +135,7 @@ const profileLabels: Record<Profile, string> = {
 function ServiceCard({ service }: { service: Service }) {
   const Icon = service.icon;
   return (
-    <a
+    <Link
       href={service.href ?? '#'}
       className={cn(
         'group flex flex-col items-center justify-center gap-3 rounded-xl p-4',
@@ -120,7 +156,7 @@ function ServiceCard({ service }: { service: Service }) {
       <span className='text-center text-xs font-medium leading-tight'>
         {service.title}
       </span>
-    </a>
+    </Link>
   );
 }
 
