@@ -2,13 +2,16 @@
 
 import {
   Command,
+  CommandDialog,
   CommandEmpty,
   CommandInput,
   CommandItem,
   CommandList,
 } from '@/components/ui/command';
+import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   Award,
   BarChart3,
@@ -28,6 +31,7 @@ import {
   PieChart,
   Receipt,
   Scale,
+  Search,
   Truck,
   UserCheck,
   UserCircle,
@@ -161,8 +165,10 @@ function ServiceCard({ service }: { service: Service }) {
 }
 
 export default function MaisAcessados() {
+  const router = useRouter();
   const [activeProfile, setActiveProfile] = useState<Profile>('cidadao');
   const [search, setSearch] = useState('');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const services = servicesByProfile[activeProfile];
   const allServices = (Object.keys(servicesByProfile) as Profile[]).flatMap(
     (profile) =>
@@ -171,7 +177,6 @@ export default function MaisAcessados() {
         profile,
       })),
   );
-  const showSearchResults = search.trim().length > 0;
 
   return (
     <section className='w-full bg-primary py-10'>
@@ -200,13 +205,38 @@ export default function MaisAcessados() {
         </div>
 
         <div className='mb-4'>
-          <Command className=''>
-            <CommandInput
+          <button
+            type='button'
+            onClick={() => setIsSearchOpen(true)}
+            className='relative w-full text-left'
+            aria-label='Buscar serviço'
+          >
+            <Search className='pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground' />
+            <Input
               value={search}
-              onValueChange={setSearch}
               placeholder='Buscar serviço...'
+              readOnly
+              className='cursor-text bg-white pl-9'
             />
-            {showSearchResults ? (
+          </button>
+
+          <CommandDialog
+            open={isSearchOpen}
+            onOpenChange={(open) => {
+              setIsSearchOpen(open);
+              if (!open) {
+                setSearch('');
+              }
+            }}
+            title='Buscar serviço'
+            description='Encontre um serviço online por nome, código ou perfil.'
+          >
+            <Command>
+              <CommandInput
+                value={search}
+                onValueChange={setSearch}
+                placeholder='Buscar serviço...'
+              />
               <CommandList>
                 <CommandEmpty>Nenhum serviço encontrado.</CommandEmpty>
                 {allServices.map((service) => {
@@ -217,8 +247,12 @@ export default function MaisAcessados() {
                       key={`${service.profile}-${service.id}`}
                       value={`${service.title} ${service.id} ${profileLabels[service.profile]}`}
                       onSelect={() => {
+                        if (service.profile === 'cidadao' && service.href) {
+                          router.push(service.href);
+                        }
                         setActiveProfile(service.profile);
                         setSearch('');
+                        setIsSearchOpen(false);
                       }}
                     >
                       <Icon className='size-4' strokeWidth={1.75} />
@@ -230,8 +264,8 @@ export default function MaisAcessados() {
                   );
                 })}
               </CommandList>
-            ) : null}
-          </Command>
+            </Command>
+          </CommandDialog>
         </div>
 
         {/* Grid de cards */}
