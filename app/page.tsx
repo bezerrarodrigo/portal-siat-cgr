@@ -20,9 +20,7 @@ export default function Home() {
           <div className='flex w-full justify-center px-6 md:w-1/3 md:justify-center '>
             <Link
               href='https://iptu.campogrande.ms.gov.br/?_gl=1*13h4udd*_ga*MTk4NTkwNTI3NC4xNzc5MzA2NDY1*_ga_5GSFXRRENZ*czE3NzkzMDY0NjQkbzEkZzEkdDE3NzkzMDY0NzkkajQ1JGwwJGgw'
-              className='w-full'
               target='_blank'
-              rel='noopener noreferrer'
             >
               <Image
                 src='/banner430x410px.png'
