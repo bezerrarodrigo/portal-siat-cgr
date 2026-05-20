@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import AplicacoesOnline from './components/aplicacoes-online';
 import MaisAcessados from './components/mais-acessados';
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
             <MaisAcessados />
           </div>
         </section>
+        <AplicacoesOnline />
       </div>
     </main>
   );
