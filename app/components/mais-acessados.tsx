@@ -3,6 +3,13 @@
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import {
+  Command,
+  CommandEmpty,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from '@/components/ui/command';
+import {
   Home,
   Copy,
   BookOpen,
@@ -119,14 +126,23 @@ function ServiceCard({ service }: { service: Service }) {
 
 export default function MaisAcessados() {
   const [activeProfile, setActiveProfile] = useState<Profile>('cidadao');
+  const [search, setSearch] = useState('');
   const services = servicesByProfile[activeProfile];
+  const allServices = (Object.keys(servicesByProfile) as Profile[]).flatMap(
+    (profile) =>
+      servicesByProfile[profile].map((service) => ({
+        ...service,
+        profile,
+      })),
+  );
+  const showSearchResults = search.trim().length > 0;
 
   return (
-    <section className='bg-primary py-10'>
-      <div className='mx-auto max-w-7xl px-6'>
+    <section className='w-full bg-primary py-10'>
+      <div className='w-full px-6 lg:px-10'>
         {/* Cabeçalho */}
         <div className='mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
-          <h2 className='text-xl font-bold text-white'>Mais Acessados</h2>
+          <h2 className='text-xl font-bold text-white'>Serviços Online</h2>
 
           {/* Filtros por perfil */}
           <div className='flex items-center gap-1 rounded-full border border-white/30 bg-white/10 p-1'>
@@ -145,6 +161,41 @@ export default function MaisAcessados() {
               </button>
             ))}
           </div>
+        </div>
+
+        <div className='mb-4'>
+          <Command className=''>
+            <CommandInput
+              value={search}
+              onValueChange={setSearch}
+              placeholder='Buscar serviço...'
+            />
+            {showSearchResults ? (
+              <CommandList>
+                <CommandEmpty>Nenhum serviço encontrado.</CommandEmpty>
+                {allServices.map((service) => {
+                  const Icon = service.icon;
+
+                  return (
+                    <CommandItem
+                      key={`${service.profile}-${service.id}`}
+                      value={`${service.title} ${service.id} ${profileLabels[service.profile]}`}
+                      onSelect={() => {
+                        setActiveProfile(service.profile);
+                        setSearch('');
+                      }}
+                    >
+                      <Icon className='size-4' strokeWidth={1.75} />
+                      <span>{service.title}</span>
+                      <span className='ml-auto text-xs text-muted-foreground'>
+                        {profileLabels[service.profile]}
+                      </span>
+                    </CommandItem>
+                  );
+                })}
+              </CommandList>
+            ) : null}
+          </Command>
         </div>
 
         {/* Grid de cards */}
