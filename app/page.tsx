@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import AplicacoesOnline from './components/aplicacoes-online';
 import MaisAcessados from './components/mais-acessados';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -17,14 +18,21 @@ export default function Home() {
       <div className='w-full pb-10'>
         <section className='flex w-full flex-col items-stretch gap-6 md:flex-row md:items-center lg:bg-primary'>
           <div className='flex w-full justify-center px-6 md:w-1/3 md:justify-center '>
-            <Image
-              src='/banner430x410px.png'
-              alt='Banner informativo'
-              width={430}
-              height={410}
-              className='h-auto w-full rounded-2xl object-contain'
-              style={{ maxWidth: 430 }}
-            />
+            <Link
+              href='https://iptu.campogrande.ms.gov.br/?_gl=1*13h4udd*_ga*MTk4NTkwNTI3NC4xNzc5MzA2NDY1*_ga_5GSFXRRENZ*czE3NzkzMDY0NjQkbzEkZzEkdDE3NzkzMDY0NzkkajQ1JGwwJGgw'
+              className='w-full'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <Image
+                src='/banner430x410px.png'
+                alt='Banner informativo'
+                width={430}
+                height={410}
+                className='h-auto w-full rounded-2xl object-contain'
+                style={{ maxWidth: 430 }}
+              />
+            </Link>
           </div>
 
           <div className='w-full md:w-2/3'>
