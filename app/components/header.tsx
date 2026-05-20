@@ -1,5 +1,4 @@
 'use client';
-import { List } from '@phosphor-icons/react';
 
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -11,19 +10,19 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { Menu } from 'lucide-react';
 import Image from 'next/image';
-import Brasao from '../../public/brasao-color.png';
 import Link from 'next/link';
 
 export default function Hero() {
   return (
     <header className='border-b'>
       <div className='flex h-16 items-center justify-between gap-6 px-6'>
-        <Image src={Brasao} alt='Brasão' />
+        <Image src='/brasaoAzul.png' alt='Brasão' width={120} height={120} />
         <Sheet>
           <SheetTrigger asChild>
             <Button className='lg:hidden mr-auto' variant='outline'>
-              <List size={20} />
+              <Menu size={20} />
             </Button>
           </SheetTrigger>
           <SheetContent side='bottom'>
