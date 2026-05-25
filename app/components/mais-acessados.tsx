@@ -15,32 +15,27 @@ import { useRouter } from 'next/navigation';
 import {
   Award,
   BarChart3,
-  BookMarked,
   BookOpen,
   Briefcase,
   Building2,
-  Calendar,
   ClipboardList,
   Copy,
   CreditCard,
   FileCheck,
   FileText,
   Home,
-  Lock,
-  Monitor,
   PieChart,
   Receipt,
   Scale,
   Search,
   Truck,
-  UserCheck,
   UserCircle,
   Users,
   File,
 } from 'lucide-react';
 import { useState } from 'react';
 
-type Profile = 'cidadao' | 'empresa' | 'servidor';
+type Profile = 'cidadao' | 'empresa';
 
 interface Service {
   id: string;
@@ -114,26 +109,11 @@ const servicesByProfile: Record<Profile, Service[]> = {
     { id: 'emprego-e', title: 'Vagas e Oportunidades', icon: Users },
     { id: 'radar-e', title: 'Radar da Transparência', icon: PieChart },
   ],
-  servidor: [
-    { id: 'contracheque', title: 'Contracheque', icon: FileText },
-    { id: 'ponto', title: 'Ponto Eletrônico', icon: Calendar },
-    { id: 'capacitacao', title: 'Capacitação', icon: BookMarked },
-    { id: 'sistemas', title: 'Sistemas Internos', icon: Monitor },
-    { id: 'ferias', title: 'Férias', icon: UserCheck },
-    { id: 'acesso', title: 'Gestão de Acesso', icon: Lock },
-    { id: 'diogrande-s', title: 'DioGrande', icon: BookOpen },
-    { id: 'legislacao-s', title: 'Legislação Municipal', icon: Scale },
-    { id: 'radar-s', title: 'Radar da Transparência', icon: PieChart },
-    { id: 'emprego-s', title: 'Concursos', icon: ClipboardList },
-    { id: 'beneficios', title: 'Benefícios', icon: Award },
-    { id: 'ouvidoria', title: 'Ouvidoria', icon: Users },
-  ],
 };
 
 const profileLabels: Record<Profile, string> = {
-  cidadao: 'Cidadão',
-  empresa: 'Empresa',
-  servidor: 'Servidor',
+  cidadao: 'Empresa/Autônomo',
+  empresa: 'Imóvel',
 };
 
 function ServiceCard({ service }: { service: Service }) {
