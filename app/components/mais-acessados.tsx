@@ -13,23 +13,16 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
-  Award,
   BarChart3,
-  BookOpen,
   Briefcase,
   Building2,
-  ClipboardList,
   Copy,
   CreditCard,
   FileCheck,
   FileText,
   Home,
-  PieChart,
   Receipt,
-  Scale,
   Search,
-  Truck,
-  UserCircle,
   Users,
   File,
 } from 'lucide-react';
@@ -47,67 +40,133 @@ interface Service {
 const servicesByProfile: Record<Profile, Service[]> = {
   cidadao: [
     {
-      id: 'guia',
-      title: 'Extrato Guia',
+      id: 'extrato-guia',
+      title: 'Extrato/Guia',
       icon: Home,
-      href: '/servicos/cidadao/guia',
+      href: 'https://siatportal.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=EXTRATO',
     },
     {
-      id: 'certidao',
-      title: 'Certidão Financeira Pessoa',
+      id: 'alvara-certidoes',
+      title: 'Alvará e Certidões',
+      icon: FileCheck,
+      href: 'https://siatportal.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=EMITIRCERTIDAOMOB',
+    },
+    {
+      id: 'consulta-empresa-autonomo',
+      title: 'Consulta Empresa/Autônomo',
+      icon: Building2,
+      href: 'https://siatportal.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=CADECO',
+    },
+    {
+      id: 'certidao-financeira-pf-pj',
+      title: 'Certidão Financeira PF/PJ',
       icon: Copy,
-      href: '/servicos/cidadao/certidao',
+      href: 'https://siatportal-r.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=EMITIRCERTIDAOFINANCEIRAPES',
     },
     {
-      id: 'imovel',
-      title: 'Certidão Financeira Imóvel',
-      icon: BookOpen,
-      href: '/servicos/cidadao/imovel',
-    },
-    {
-      id: 'baixa',
-      title: 'Certidão Baixa de Inscrição Municipal',
-      icon: FileText,
-      href: '/servicos/cidadao/baixa',
-    },
-    {
-      id: 'comprovante',
-      title: 'Comprovante de Inscrição e de Situação Cadastral',
+      id: 'comprovante-inscricao',
+      title: 'Comprovante de Inscrição',
       icon: Users,
-      href: '/servicos/cidadao/comprovante',
+      href: 'https://siatportal-r.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=COMPROVANTEINSCRICAOESITUACAOMUNICIPAL',
     },
     {
-      id: 'autenticidade',
+      id: 'autenticidade-certidao',
       title: 'Autenticidade Certidão',
       icon: File,
-      href: '/servicos/cidadao/autenticidade',
+      href: 'https://siatportal.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=VALIDARCERTIDAO',
     },
     {
-      id: 'cadastro',
-      title: 'Ficha Cadastral Imóvel',
-      icon: Award,
-      href: '/servicos/cidadao/cadastro',
-    },
-    {
-      id: 'economico',
+      id: 'indicador-economico',
       title: 'Indicador Econômico',
       icon: Briefcase,
-      href: '/servicos/cidadao/economico',
+      href: 'https://siatportal-r.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=INDICADORECONOMICO',
+    },
+    {
+      id: 'dte',
+      title: 'Domicílio Tributário Eletrônico',
+      icon: Receipt,
+      href: 'https://dte.campogrande.ms.gov.br/dte/paginas/portal/#/',
+    },
+    {
+      id: 'nota-fiscal-eletronica',
+      title: 'Nota Fiscal Eletrônica',
+      icon: FileText,
+      href: 'https://nfse.campogrande.ms.gov.br/notafiscal/paginas/portal/index.html#/',
+    },
+    {
+      id: 'des-if',
+      title: 'DES-IF',
+      icon: BarChart3,
+      href: 'https://desif.campogrande.ms.gov.br/desif-web/paginas/portal/index.html#/',
+    },
+    {
+      id: 'portal-negociacao',
+      title: 'Portal da Negociação',
+      icon: CreditCard,
+      href: 'https://siatportal-r.campogrande.ms.gov.br/portal-web/paginas/inicial/',
+    },
+    {
+      id: 'requerimentos',
+      title: 'Requerimentos',
+      icon: FileText,
+      href: 'https://www.campogrande.ms.gov.br/sefaz/requerimentos/',
     },
   ],
   empresa: [
-    { id: 'nota-fiscal-e', title: 'Nota Fiscal', icon: Receipt },
-    { id: 'alvara', title: 'Alvará de Funcionamento', icon: FileCheck },
-    { id: 'iss', title: 'ISS Online', icon: Building2 },
-    { id: 'certidao', title: 'Certidão Negativa', icon: ClipboardList },
-    { id: 'diogrande-e', title: 'DioGrande', icon: BookOpen },
-    { id: 'legislacao-e', title: 'Legislação Municipal', icon: Scale },
-    { id: 'parcelamento', title: 'Parcelamento', icon: CreditCard },
-    { id: 'licitacoes', title: 'Licitações', icon: BarChart3 },
-    { id: 'fornecedores', title: 'Fornecedores', icon: Truck },
-    { id: 'pnafm-e', title: 'PNAFM', icon: UserCircle },
-    { id: 'emprego-e', title: 'Vagas e Oportunidades', icon: Users },
-    { id: 'radar-e', title: 'Radar da Transparência', icon: PieChart },
+    {
+      id: 'extrato-guia-iptu-taxas',
+      title: 'Extrato/Guia de IPTU/Taxas',
+      icon: Home,
+      href: 'https://siatportal.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=EXTRATO',
+    },
+    {
+      id: 'guia-itbi',
+      title: 'Guia de ITBI',
+      icon: Receipt,
+      href: 'https://itbi-r.campogrande.ms.gov.br/itbi/paginas/portal/index.html',
+    },
+    {
+      id: 'certidao-financeira-imovel',
+      title: 'Certidão Financeira Imóvel',
+      icon: FileCheck,
+      href: 'https://siatportal-r.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=EMITIRCERTIDAOFINANCEIRAIMO',
+    },
+    {
+      id: 'certidao-financeira-pf-pj-imovel',
+      title: 'Certidão Financeira PF/PJ',
+      icon: Copy,
+      href: 'https://siatportal-r.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=EMITIRCERTIDAOFINANCEIRAPES',
+    },
+    {
+      id: 'autenticidade-certidao-imovel',
+      title: 'Autenticidade Certidão',
+      icon: File,
+      href: 'https://siatportal.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=VALIDARCERTIDAO',
+    },
+    {
+      id: 'ficha-cadastral-imovel',
+      title: 'Ficha Cadastral do Imóvel',
+      icon: Building2,
+      href: 'https://siatportal-r.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=FICHAIMOPORTAL',
+    },
+    {
+      id: 'indicador-economico-imovel',
+      title: 'Indicador Econômico',
+      icon: Briefcase,
+      href: 'https://siatportal-r.campogrande.ms.gov.br/dsf_cgr_portal/inicial.do?evento=montaMenu&acronym=INDICADORECONOMICO',
+    },
+    {
+      id: 'portal-negociacao-imovel',
+      title: 'Portal da Negociação',
+      icon: CreditCard,
+      href: 'https://siatportal-r.campogrande.ms.gov.br/portal-web/paginas/inicial/',
+    },
+    {
+      id: 'requerimentos-imovel',
+      title: 'Requerimentos',
+      icon: FileText,
+      href: 'https://www.campogrande.ms.gov.br/sefaz/requerimentos/',
+    },
   ],
 };
 
@@ -227,8 +286,12 @@ export default function MaisAcessados() {
                       key={`${service.profile}-${service.id}`}
                       value={`${service.title} ${service.id} ${profileLabels[service.profile]}`}
                       onSelect={() => {
-                        if (service.profile === 'cidadao' && service.href) {
-                          router.push(service.href);
+                        if (service.href) {
+                          if (service.href.startsWith('http')) {
+                            window.location.assign(service.href);
+                          } else {
+                            router.push(service.href);
+                          }
                         }
                         setActiveProfile(service.profile);
                         setSearch('');
