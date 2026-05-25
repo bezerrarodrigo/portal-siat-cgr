@@ -1,16 +1,8 @@
 'use client';
 
-import { Separator } from '@/components/ui/separator';
-import {
-  ChatIcon,
-  EnvelopeIcon,
-  EnvelopeSimpleIcon,
-  FacebookLogoIcon,
-  InstagramLogoIcon,
-  MapPinIcon,
-} from '@phosphor-icons/react';
+import {Separator} from '@/components/ui/separator';
+import {ChatIcon, EnvelopeSimpleIcon, FacebookLogoIcon, InstagramLogoIcon, MapPinIcon,} from '@phosphor-icons/react';
 import Image from 'next/image';
-import Brasao from '../../public/brasao-pmcg.png';
 
 const yearNow = new Date().getFullYear();
 
@@ -21,10 +13,12 @@ export default function Footer() {
         {/* Logo */}
         <div className='flex items-center justify-center md:justify-start'>
           <Image
-            src={Brasao}
+            src="/logoAtual.png"
             alt='Brasão da Prefeitura de Campo Grande'
+            height={60}
             width={160}
             className='opacity-90'
+            style={{ width: 'auto', height: 'auto' }}
           />
         </div>
         {/* Endereço */}

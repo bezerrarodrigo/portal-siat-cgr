@@ -8,10 +8,11 @@ export default function Home() {
     <main className='flex min-h-screen flex-col antialiased'>
       <div className='flex flex-col w-full my-10 justify-center items-center space-y-10'>
         <Image
-          src='/brasaoPrefeitura.png'
+          src='/logoAtual.png'
           alt='Brasão da Prefeitura de Campo Grande'
           width={400}
           height={200}
+          style={{ width: 'auto', height: 'auto' }}
         />
       </div>
 
@@ -28,7 +29,7 @@ export default function Home() {
                 width={430}
                 height={410}
                 className='h-auto w-full rounded-2xl object-contain'
-                style={{ maxWidth: 430 }}
+                style={{ width: '100%', height: 'auto', maxWidth: 430 }}
               />
             </Link>
           </div>
